@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>JobFit AI</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fc;
+            color: #172033;
+        }
+
+        /* ---------- NAVBAR ---------- */
+
+        nav {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #64748b;
+            margin-left: 30px;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #1e3a8a
+                );
+
+            color: white;
+            padding: 75px 7%;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            max-width: 700px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            color: #60a5fa;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #cbd5e1;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        /* ---------- MAIN ---------- */
+
+        .container {
+            width: 86%;
+            max-width: 1200px;
+            margin: -40px auto 60px;
+        }
+
+        /* ---------- INPUT CARD ---------- */
+
+        .input-card {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.08);
+        }
+
+        .input-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border: 1px solid #dbe1ea;
+            border-radius: 10px;
+            padding: 13px;
+            font-size: 15px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        textarea {
+            height: 160px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        .button {
+            background: #2563eb;
+            color: white;
+            border: none;
+
+            padding: 14px 28px;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background: #1d4ed8;
+        }
+
+        /* ---------- SECTION ---------- */
+
+        .section {
+            margin-top: 45px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        /* ---------- DASHBOARD ---------- */
+
+        .dashboard {
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .stat {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-title {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .stat-number {
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #2563eb;
+        }
+
+        /* ---------- SKILLS ---------- */
+
+        .skills-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .skill {
+            display: inline-block;
+
+            padding: 8px 13px;
+
+            margin: 5px;
+
+            border-radius: 20px;
+
+            background: #eff6ff;
+            color: #1d4ed8;
+
+            font-size: 14px;
+        }
+
+        .missing {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        /* ---------- JOBS ---------- */
+
+        .jobs {
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+        .job-card {
+            background: white;
+            padding: 25px;
+
+            border-radius: 16px;
+
+            border: 1px solid #e5e7eb;
+
+            transition: 0.2s;
+        }
+
+        .job-card:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .job-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .company {
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .match {
+            background: #dcfce7;
+            color: #15803d;
+
+            padding: 7px 10px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .job-info {
+            margin-top: 20px;
+
+            display: flex;
+            gap: 15px;
+
+            color: #475569;
+            font-size: 14px;
+        }
+
+        .description {
+            margin-top: 18px;
+
+            color: #64748b;
+
+            line-height: 1.5;
+        }
+
+        .why {
+            margin-top: 20px;
+
+            background: #f8fafc;
+
+            padding: 15px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+        }
+
+        .why strong {
+            color: #172033;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #111827;
+            color: #94a3b8;
+
+            padding: 30px;
+
+            text-align: center;
+
+            margin-top: 70px;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media(max-width: 800px) {
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .jobs {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                width: 92%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <div class="logo">
+        JobFit<span> AI</span>
+    </div>
+
+    <div>
+
+        <a href="#">
+            Dashboard
+        </a>
+
+        <a href="#">
+            How It Works
+        </a>
+
+        <a href="#">
+            About
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+
+        Find the jobs that
+        <span>fit you.</span>
+
+    </h1>
+
+    <p>
+
+        JobFit AI analyzes your resume, identifies your
+        skills, evaluates your ATS compatibility and
+        recommends jobs that match your profile.
+
+    </p>
+
+</section>
+
+
+<div class="container">
+
+
+<!-- INPUT -->
+
+<div class="input-card">
+
+    <h2>
+        Analyze Your Career Profile
+    </h2>
+
+    <p class="subtitle">
+
+        Enter your target role and paste your resume
+        to discover your job compatibility.
+
+    </p>
+
+
+    <form method="POST">
+
+
+        <label>
+            Target Job Role
+        </label>
+
+        <input
+            type="text"
+            name="role"
+            placeholder="Example: Machine Learning Engineer"
+        >
+
+
+        <label>
+            Your Resume
+        </label>
+
+        <textarea
+            name="resume"
+            placeholder="Paste your resume here...
+
+Example:
+
+Python developer with experience in Flask,
+SQL, Machine Learning and Data Analysis.
+
+Projects:
+• Machine Learning prediction system
+• Flask job portal
+
+Skills:
+Python, SQL, Flask, Git..."
+            required></textarea>
+
+
+        <button
+            class="button"
+            type="submit">
+
+            Analyze My Profile →
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+{% if result %}
+
+
+<!-- DASHBOARD -->
+
+<div class="section">
+
+    <h2 class="section-title">
+        Your Career Analysis
+    </h2>
+
+
+    <div class="dashboard">
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                ATS Compatibility
+            </div>
+
+            <div class="stat-number">
+                {{ result.ats }}/100
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                Skills Detected
+            </div>
+
+            <div class="stat-number">
+                {{ result.skills|length }}
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-title">
+                Jobs Found
+            </div>
+
+            <div class="stat-number">
+                {{ result.jobs|length }}
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- SKILLS -->
+
+<div class="section">
+
+    <h2 class="section-title">
+        Skills Detected
+    </h2>
+
+    <div class="skills-box">
+
+        {% for skill in result.skills %}
+
+            <span class="skill">
+                ✓ {{ skill }}
+            </span>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+
+<!-- MISSING SKILLS -->
+
+<div class="section">
+
+    <h2 class="section-title">
+        Skills You Could Improve
+    </h2>
+
+    <div class="skills-box">
+
+        {% if result.missing %}
+
+            {% for skill in result.missing %}
+
+                <span class="skill missing">
+                    + {{ skill }}
+                </span>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                Your profile covers the detected
+                requirements.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+<!-- JOBS -->
+
+<div class="section">
+
+    <h2 class="section-title">
+        Recommended Jobs
+    </h2>
+
+    <div class="jobs">
+
+
+        {% for job in result.jobs %}
+
+
+        <div class="job-card">
+
+
+            <div class="job-top">
+
+
+                <div>
+
+                    <div class="job-title">
+
+                        {{ job.title }}
+
+                    </div>
+
+                    <div class="company">
+
+                        {{ job.company }}
+
+                    </div>
+
+                </div>
+
+
+                <div class="match">
+
+                    {{ job.match }}% Match
+
+                </div>
+
+
+            </div>
+
+
+            <div class="job-info">
+
+                <span>
+                    📍 {{ job.location }}
+                </span>
+
+                <span>
+                    💰 {{ job.salary }}
+                </span>
+
+                <span>
+                    💼 {{ job.experience }}
+                </span>
+
+            </div>
+
+
+            <p class="description">
+
+                {{ job.description }}
+
+            </p>
+
+
+            <div class="why">
+
+                <strong>
+                    Why this job matches:
+                </strong>
+
+                <br><br>
+
+                Your resume contains skills that
+                overlap with this role. Improving
+                your missing skills can increase
+                your compatibility.
+
+            </div>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+</div>
+
+
+{% endif %}
+
+
+</div>
+
+
+<footer>
+
+    JobFit AI © 2026
+
+    <br>
+
+    AI-powered career discovery and job matching
+
+</footer>
+
+
+</body>
+
+</html>
